@@ -1,5 +1,6 @@
 import React from 'react';
 import ShowBooks from './showBooks';
+import ShowBookshelves from './showBookshelves';
 import * as BooksAPI from './BooksAPI';
 import './App.css';
 
@@ -216,8 +217,7 @@ class BooksApp extends React.Component {
             </div>
           </div>
         )}
-        <ShowBooks
-        books={this.state.books}/>
+        <ShowBookshelves books={this.state.books}/>
       </div>
     )
   }
