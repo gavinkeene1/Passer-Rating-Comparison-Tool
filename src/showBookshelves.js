@@ -8,7 +8,14 @@ class ShowBookshelves extends Component {
         books: PropTypes.array.isRequired
     }
 
-    render() {        
+    render() {   
+        const currentlyReading = this.props.books.filter((book) => (
+            book.shelf === 'currentlyReading'));
+        const wantToRead = this.props.books.filter((book) => (
+            book.shelf === 'wantToRead'));
+        const read = this.props.books.filter((book) => (
+            book.shelf === 'read'));
+        
         return (
             <div className="list-books-content">
                 <div>
