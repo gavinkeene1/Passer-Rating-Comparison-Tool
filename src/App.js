@@ -1,6 +1,6 @@
 import React from 'react';
-import ShowBooks from './showBooks';
-import ShowBookshelves from './showBookshelves';
+import ShowBooks from './bookshelf';
+import ShowBookshelves from './bookcase';
 import * as BooksAPI from './BooksAPI';
 import './App.css';
 
@@ -22,6 +22,14 @@ class BooksApp extends React.Component {
               books
           }))
       })
+  }
+
+  updateShelf = (book, shelf) => {
+    book.shelf = shelf
+    this.setState(() => ({
+      books: this.state.books.filter(book => book.id !== book.id).concat([book])
+    }))
+    BooksAPI.update(book, shelf)
   }
   
   render() {
@@ -217,7 +225,7 @@ class BooksApp extends React.Component {
             </div>
           </div>
         )}
-        <ShowBookshelves books={this.state.books}/>
+        <ShowBookshelves books={this.state.books} updateShelf={this.updateShelf}/>
       </div>
     )
   }
