@@ -3,7 +3,7 @@ import PropTypes, { array } from 'prop-types';
 import ShowBooks from './bookshelf';
 import { Link } from 'react-router-dom';
 
-class ShowBookshelves extends Component {
+class Bookcase extends Component {
     static propTypes = {
         books: PropTypes.array.isRequired,
         updateShelf: PropTypes.func.isRequired
@@ -50,4 +50,4 @@ class ShowBookshelves extends Component {
     }
 }
 
-export default ShowBookshelves;
+export default Bookcase;
