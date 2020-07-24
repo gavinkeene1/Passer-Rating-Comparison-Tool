@@ -11,6 +11,7 @@ class ShowBooks extends Component {
 
     render() {
         const { books, shelf } = this.props;
+        console.log(books);
         
         // Ternary operator sorts books to respective shelves
         const sortBooksByShelf = 
@@ -26,9 +27,8 @@ class ShowBooks extends Component {
             ? books.filter((book) => (
               book.shelf === 'read'
           ))
-            : console.log('YIKES YIKES YIKES')
-            books.filter((book) => (
-              book.shelf.includes(shelf)
+            : books.filter((book) => (
+              book.shelf.includes('a')
             ))
 
             console.log(shelf);
