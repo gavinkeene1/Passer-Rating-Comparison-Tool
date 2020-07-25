@@ -3,13 +3,12 @@ import PropTypes from 'prop-types';
 
 class Book extends Component{
     static propTypes = {
-        shelf: PropTypes.string.isRequired,
         updateShelf: PropTypes.func.isrequired
     }
 
     render () {
 
-        const { book, shelf, updateShelf } = this.props;
+        const { book, updateShelf } = this.props;
 
         return (
         <div key={book.id} className="book">
