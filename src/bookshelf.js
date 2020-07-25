@@ -14,7 +14,7 @@ class Bookshelf extends Component {
 
         return(
             bookshelf.map((book) => (
-              <Book book={book} shelf={shelf} updateShelf={updateShelf}/>
+              <Book book={book} updateShelf={updateShelf}/>
             )))
     }
 }

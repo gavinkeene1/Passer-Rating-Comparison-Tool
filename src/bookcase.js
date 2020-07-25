@@ -19,18 +19,6 @@ class Bookcase extends Component {
             book.shelf === 'wantToRead'));
         const read = books.filter((book) => (
             book.shelf === 'read'));
-
-        // Sort books to their respective shelves (ternary operator)
-        const sortBooksByShelf = 
-        shelf === 'currentlyReading'?
-            books.filter((book) => (book.shelf === 'currentlyReading')):
-        shelf === 'wantToRead'?
-            books.filter((book) => (book.shelf === 'wantToRead')):
-        shelf === 'read'?
-            books.filter((book) => (book.shelf === 'read')):
-        /* After all three bookshelves get their books, the
-        ternary operator filters nothing */
-        books.filter((book) => (book.shelf === 'N/A'))
         
         return (
             <div className="list-books-content">
