@@ -6,13 +6,13 @@ import { Link } from 'react-router-dom';
 class Bookcase extends Component {
     static propTypes = {
         books: PropTypes.array.isRequired,
-        updateShelf: PropTypes.func.isRequired,
-        bookshelfTitle: PropTypes.string.isRequired
+        updateShelf: PropTypes.func.isRequired
     }
 
     render() {   
-        const { books, shelf, updateShelf } = this.props;
+        const { books, updateShelf } = this.props;
 
+        // Functions to filter books to their respective bookshelves:
         const currentlyReading = books.filter((book) => (
             book.shelf === 'currentlyReading'));
         const wantToRead = books.filter((book) => (
@@ -28,10 +28,9 @@ class Bookcase extends Component {
                         <div className="bookshelf-books">
                         <ol className="books-grid">
                             <Bookshelf
-                                books={this.props.books}
                                 shelf='currentlyReading'
                                 updateShelf={updateShelf}
-                                bookshelf={currentlyReading}
+                                bookshelfBooks={currentlyReading}
                         />
                         </ol>
                         </div>
@@ -41,10 +40,9 @@ class Bookcase extends Component {
                         <div className="bookshelf-books">
                         <ol className="books-grid">
                             <Bookshelf 
-                                books={this.props.books}
                                 shelf='wantToRead'
                                 updateShelf={updateShelf}
-                                bookshelf={wantToRead}
+                                bookshelfBooks={wantToRead}
                             />
                         </ol>
                         </div>
@@ -54,10 +52,9 @@ class Bookcase extends Component {
                         <div className="bookshelf-books">
                         <ol className="books-grid">
                             <Bookshelf
-                                books={this.props.books}
                                 shelf='read'
                                 updateShelf={updateShelf}
-                                bookshelf={read}
+                                bookshelfBooks={read}
                             />
                         </ol>
                         </div>

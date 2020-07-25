@@ -4,16 +4,16 @@ import Book from './book';
 
 class Bookshelf extends Component {
     static propTypes = {
-        updateShelf: PropTypes.func.isRequired,
-        sortBooksByShelf: PropTypes.func.isrequired,
+        bookshelfTitle: PropTypes.string.isRequired,
+        bookshelfBooks: PropTypes.func.isrequired,
         updateShelf: PropTypes.func.isRequired
     }
 
     render() {
-        const { shelf, bookshelf, updateShelf } = this.props;
+        const {bookshelfTitle, bookshelfBooks, updateShelf } = this.props;
 
         return(
-            bookshelf.map((book) => (
+            bookshelfBooks.map((book) => (
               <Book book={book} updateShelf={updateShelf}/>
             )))
     }
