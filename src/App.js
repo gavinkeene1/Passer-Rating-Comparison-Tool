@@ -58,11 +58,6 @@ class BooksApp extends React.Component {
         ) : (
           // List-books holds the app's main page
           // List-books-title holds the "My Reads" Banner
-          // List-books-content holds the "Currently Reading", "Want to Read", and "Read" bookshelves
-          // Classname="bookshelf" holds resepective bookshelf banners
-          // Classname="bookshelf-title" holds respectie bookshelf titles
-          // Classname="books-grid" holds list items for individual books
-          // <li> tags house individual className="book" divs which hold individual book information
           <div className="list-books">
             <div className="list-books-title">
               <h1>MyReads</h1>

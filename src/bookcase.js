@@ -18,9 +18,14 @@ class Bookcase extends Component {
         const wantToRead = books.filter((book) => (
             book.shelf === 'wantToRead'));
         const read = books.filter((book) => (
-            book.shelf === 'read'));
+           book.shelf === 'read'));
         
         return (
+            // List-books-content holds the "Currently Reading", "Want to Read", and "Read" bookshelves
+          // Classname="bookshelf" holds resepective bookshelf banners
+          // Classname="bookshelf-title" holds respectie bookshelf titles
+          // Classname="books-grid" holds list items for individual books
+          // <li> tags house individual className="book" divs which hold individual book information
             <div className="list-books-content">
                 <div>
                     <div className="bookshelf">
@@ -28,9 +33,9 @@ class Bookcase extends Component {
                         <div className="bookshelf-books">
                         <ol className="books-grid">
                             <Bookshelf
-                                shelf='currentlyReading'
-                                updateShelf={updateShelf}
+                                bookshelfTitle='currentlyReading'
                                 bookshelfBooks={currentlyReading}
+                                updateShelf={updateShelf}
                         />
                         </ol>
                         </div>
@@ -40,9 +45,9 @@ class Bookcase extends Component {
                         <div className="bookshelf-books">
                         <ol className="books-grid">
                             <Bookshelf 
-                                shelf='wantToRead'
-                                updateShelf={updateShelf}
+                                bookshelfTitle='wantToRead'
                                 bookshelfBooks={wantToRead}
+                                updateShelf={updateShelf}
                             />
                         </ol>
                         </div>
@@ -52,9 +57,9 @@ class Bookcase extends Component {
                         <div className="bookshelf-books">
                         <ol className="books-grid">
                             <Bookshelf
-                                shelf='read'
-                                updateShelf={updateShelf}
+                                bookshelfTitle='read'
                                 bookshelfBooks={read}
+                                updateShelf={updateShelf}
                             />
                         </ol>
                         </div>
