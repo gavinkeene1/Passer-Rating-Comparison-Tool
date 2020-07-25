@@ -1,5 +1,4 @@
 import React from 'react';
-import ShowBooks from './bookshelf';
 import Bookcase from './bookcase';
 import * as BooksAPI from './BooksAPI';
 import './App.css';
@@ -64,7 +63,6 @@ class BooksApp extends React.Component {
           // Classname="bookshelf-title" holds respectie bookshelf titles
           // Classname="books-grid" holds list items for individual books
           // <li> tags house individual className="book" divs which hold individual book information
-
           <div className="list-books">
             <div className="list-books-title">
               <h1>MyReads</h1>
