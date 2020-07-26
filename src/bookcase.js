@@ -22,47 +22,35 @@ class Bookcase extends Component {
         
         return (
             // List-books-content holds the "Currently Reading", "Want to Read", and "Read" bookshelves
-          // Classname="bookshelf" holds resepective bookshelf banners
-          // Classname="bookshelf-title" holds respectie bookshelf titles
-          // Classname="books-grid" holds list items for individual books
-          // <li> tags house individual className="book" divs which hold individual book information
+            // Classname="bookshelf" holds resepective bookshelf banners
+            // Classname="bookshelf-title" holds respectie bookshelf titles
+            // Classname="books-grid" holds list items for individual books
+            // <li> tags house individual className="book" divs which hold individual book information
             <div className="list-books-content">
                 <div>
                     <div className="bookshelf">
                         <h2 className="bookshelf-title">Currently Reading</h2>
-                        <div className="bookshelf-books">
-                        <ol className="books-grid">
                             <Bookshelf
-                                bookshelfTitle='currentlyReading'
+                                bookshelfTitle='Currently Reading'
                                 bookshelfBooks={currentlyReading}
                                 updateShelf={updateShelf}
                         />
-                        </ol>
-                        </div>
                     </div>
                     <div className="bookshelf">
                         <h2 className="bookshelf-title">Want to Read</h2>
-                        <div className="bookshelf-books">
-                        <ol className="books-grid">
                             <Bookshelf 
                                 bookshelfTitle='wantToRead'
                                 bookshelfBooks={wantToRead}
                                 updateShelf={updateShelf}
                             />
-                        </ol>
-                        </div>
                     </div>
                     <div className="bookshelf">
                         <h2 className="bookshelf-title">Read</h2>
-                        <div className="bookshelf-books">
-                        <ol className="books-grid">
                             <Bookshelf
                                 bookshelfTitle='read'
                                 bookshelfBooks={read}
                                 updateShelf={updateShelf}
                             />
-                        </ol>
-                        </div>
                     </div>
                 </div>
           </div>

@@ -13,10 +13,16 @@ class Bookshelf extends Component {
         const {bookshelfTitle, bookshelfBooks, updateShelf } = this.props;
 
         return(
-            bookshelfBooks.map((book) => (
+        <div className="bookshelf">
+        <h2 className="bookshelf-title">{bookshelfTitle}</h2>
+        <div className="bookshelf-books">
+        <ol className="books-grid">
+        {bookshelfBooks.map((book) => (
               <Book book={book} updateShelf={updateShelf}/>
-            )))
-    }
-}
+            ))}
+        </ol>
+        </div>
+    </div>
+            )}}
 
 export default Bookshelf;
