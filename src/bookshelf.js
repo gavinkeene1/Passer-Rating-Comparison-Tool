@@ -14,15 +14,15 @@ class Bookshelf extends Component {
 
         return(
         <div className="bookshelf">
-        <h2 className="bookshelf-title">{bookshelfTitle}</h2>
-        <div className="bookshelf-books">
-        <ol className="books-grid">
-        {bookshelfBooks.map((book) => (
-              <Book book={book} updateShelf={updateShelf}/>
-            ))}
-        </ol>
+          <h2 className="bookshelf-title">{bookshelfTitle}</h2>
+          <div className="bookshelf-books">
+            <ol className="books-grid">
+            {bookshelfBooks.map((book) => (
+                  <Book book={book} updateShelf={updateShelf}/>
+                ))}
+            </ol>
+          </div>
         </div>
-    </div>
             )}}
 
 export default Bookshelf;

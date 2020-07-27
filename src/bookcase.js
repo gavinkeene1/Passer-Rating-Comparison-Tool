@@ -23,35 +23,23 @@ class Bookcase extends Component {
         return (
             // List-books-content holds the "Currently Reading", "Want to Read", and "Read" bookshelves
             // Classname="bookshelf" holds resepective bookshelf banners
-            // Classname="bookshelf-title" holds respectie bookshelf titles
-            // Classname="books-grid" holds list items for individual books
-            // <li> tags house individual className="book" divs which hold individual book information
             <div className="list-books-content">
                 <div>
-                    <div className="bookshelf">
-                        <h2 className="bookshelf-title">Currently Reading</h2>
                             <Bookshelf
                                 bookshelfTitle='Currently Reading'
                                 bookshelfBooks={currentlyReading}
                                 updateShelf={updateShelf}
                         />
-                    </div>
-                    <div className="bookshelf">
-                        <h2 className="bookshelf-title">Want to Read</h2>
                             <Bookshelf 
-                                bookshelfTitle='wantToRead'
+                                bookshelfTitle='Want To Read'
                                 bookshelfBooks={wantToRead}
                                 updateShelf={updateShelf}
                             />
-                    </div>
-                    <div className="bookshelf">
-                        <h2 className="bookshelf-title">Read</h2>
                             <Bookshelf
-                                bookshelfTitle='read'
+                                bookshelfTitle='Read'
                                 bookshelfBooks={read}
                                 updateShelf={updateShelf}
                             />
-                    </div>
                 </div>
           </div>
         )
