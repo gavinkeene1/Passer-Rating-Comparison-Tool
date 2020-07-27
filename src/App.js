@@ -1,5 +1,6 @@
 import React from 'react';
-import Bookcase from './bookcase';
+import ShowBookcase from './ShowBookcase';
+import SearchBooks from './SearchBooks';
 import * as BooksAPI from './BooksAPI';
 import './App.css';
 
@@ -67,7 +68,13 @@ class BooksApp extends React.Component {
             </div>
           </div>
         )}
-        <Bookcase books={this.state.books} updateShelf={this.updateShelf}/>
+        <ShowBookcase
+          books={this.state.books}
+          updateShelf={this.updateShelf}
+          />
+        <SearchBooks
+
+        />
       </div>
     )
   }

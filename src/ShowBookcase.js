@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
-import PropTypes, { array } from 'prop-types';
+import PropTypes from 'prop-types';
 import Bookshelf from './bookshelf';
 import { Link } from 'react-router-dom';
 
-class Bookcase extends Component {
+class ShowBookcase extends Component {
     static propTypes = {
         books: PropTypes.array.isRequired,
         updateShelf: PropTypes.func.isRequired
@@ -46,4 +46,4 @@ class Bookcase extends Component {
     }
 }
 
-export default Bookcase;
+export default ShowBookcase;
