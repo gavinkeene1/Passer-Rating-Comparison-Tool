@@ -46,14 +46,12 @@ class BooksApp extends React.Component {
               <h1>MyReads</h1>
             </div>
             <div className="open-search">
-
                 <Link
                   to='search-books'
                   class='open-search'
                 >
                 Add a book
                 </Link>
-
             </div>
           </div>
         )}
