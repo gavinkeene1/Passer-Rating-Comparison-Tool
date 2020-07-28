@@ -47,7 +47,7 @@ class BooksApp extends React.Component {
             </div>
             <div className="open-search">
                 <Link
-                  to='search-books'
+                  to='search'
                   class='open-search'
                 >
                 Add a book
@@ -61,7 +61,7 @@ class BooksApp extends React.Component {
           updateShelf={this.updateShelf}
           />
         )} />
-        <Route path='/search-books' render={({history}) => (
+        <Route path='/search' render={({history}) => (
           <SearchBooks
 
         />
