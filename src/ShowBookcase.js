@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import Bookshelf from './bookshelf';
-import { Link } from 'react-router-dom';
 
 class ShowBookcase extends Component {
     static propTypes = {
@@ -18,7 +17,7 @@ class ShowBookcase extends Component {
         const wantToRead = books.filter((book) => (
             book.shelf === 'wantToRead'));
         const read = books.filter((book) => (
-           book.shelf === 'read'));
+            book.shelf === 'read'));
         
         return (
             // List-books-content holds the "Currently Reading", "Want to Read", and "Read" bookshelves
