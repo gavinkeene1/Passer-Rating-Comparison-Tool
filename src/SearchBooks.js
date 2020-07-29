@@ -6,12 +6,7 @@ class SearchBooks extends React.Component {
         return(
             <div className="search-books">
             <div className="search-books-bar">
-              <Link
-                to='/'
-                className='close-search'
-                >
-                Close
-                </Link>
+              <Link to='/' className='close-search'>Close</Link>
               <div className="search-books-input-wrapper">
                 {/*
                   NOTES: The search from BooksAPI is limited to a particular set of search terms.

@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import Bookshelf from './bookshelf';
+import { Link } from 'react-router-dom';
 
 class ShowBookcase extends Component {
     static propTypes = {
@@ -20,15 +21,18 @@ class ShowBookcase extends Component {
             book.shelf === 'read'));
         
         return (
-            // List-books-content holds the "Currently Reading", "Want to Read", and "Read" bookshelves
-            // Classname="bookshelf" holds resepective bookshelf banners
+            
+            <div className="list-books">
+            <div className="list-books-title">
+              <h1>MyReads</h1>
+            </div>
             <div className="list-books-content">
                 <div>
                             <Bookshelf
                                 bookshelfTitle='Currently Reading'
                                 bookshelfBooks={currentlyReading}
                                 updateShelf={updateShelf}
-                        />
+                            />
                             <Bookshelf 
                                 bookshelfTitle='Want To Read'
                                 bookshelfBooks={wantToRead}
@@ -41,6 +45,15 @@ class ShowBookcase extends Component {
                             />
                 </div>
           </div>
+            <div className="open-search">
+                <Link
+                  to='search'
+                  className='open-search'
+                >
+                Add a book
+                </Link>
+            </div>
+          </div>  
         )
     }
 }
