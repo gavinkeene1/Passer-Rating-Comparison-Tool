@@ -125,7 +125,7 @@ David Montgomery	CHI	1	0	0	0	1
 `;
 
 const statsWithCommas = (stats) => {
-  return stats.replace(/\s/g, "---"); // Break up with tabs
+  return stats.replace(/\n/g, "---"); // Break up with tabs
 };
 
 const statCategories = (statYear) => {
@@ -133,7 +133,7 @@ const statCategories = (statYear) => {
 };
 
 const createData = (statYear) => {
-  const player = statCategories(statYear);
+  const player = statCategories(statYear)[1];
   // console.log(`player: ${player}`);
   // const team = statCategories(statYear);
   /*
