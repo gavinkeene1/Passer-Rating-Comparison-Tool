@@ -1,12 +1,34 @@
-import * as React from "react";
 import { stat } from "fs";
 import { useCallback } from "react";
 
 export const header = `Player Team Att Cmp Yds TD Int`;
 
 const isTeamName = (value) =>
+  "ARI" ||
+  "ATL" ||
+  "BAL" ||
+  "BUF" ||
   "CAR" ||
   "CHI" ||
+  "CIN" ||
+  "CLE" ||
+  "DAL" ||
+  "DEN" ||
+  "DET" ||
+  "DET" ||
+  "GB" ||
+  "HOU" ||
+  "IND" ||
+  "JAX" ||
+  "KC" ||
+  "LA" ||
+  "LAC" ||
+  "LV" ||
+  "MIA" ||
+  "MIN" ||
+  "NE" ||
+  "NO" ||
+  "NYG" ||
   "NYJ" ||
   "PHI" ||
   "PIT" ||
