@@ -125,11 +125,10 @@ David Montgomery	,	CHI		1		0		0	0	1
 `;
 
 const statsWithCommas = (stats) => {
-  return stats.replace(/\s\t+/g, "jhgjg");
+  return stats.replace(/\s/g, "jhgjg");
 };
 
 const statCategories = (statYear) => {
-    console.log(`statsWithCommas: ${statsWithCommas(statYear).replace(/(jhgjg)+/g, 'asdf')}`);
     return statsWithCommas(statYear).replace(/(jhgjg)+/g, `---`);//.split("");
 };
 
