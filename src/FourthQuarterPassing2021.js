@@ -128,8 +128,8 @@ const statsWithCommas = (stats) => {
   return stats.replace(/\n/g, "---"); // Break up with tabs
 };
 
-const statCategories = (statYear) => {
-    return statsWithCommas(statYear).split("---");
+const statCategories = (excelData) => {
+    return statsWithCommas(excelData).split("---");
 };
 
 const getPlayerName = (individualPlayerString) => {
@@ -144,8 +144,18 @@ const getPlayerName = (individualPlayerString) => {
     return playerName.join(' ');
 }
 
-const createData = (statYear) => {
-  const individualPlayerString = statCategories(statYear)[1];
+const FourthQuarterPassingStatsArray = (excelData) => {
+    return statCategories(excelData);
+}
+
+const getAllPassingStats = (excelDataArray) => {
+    return excelDataArray
+}
+
+const createData = (excelData) => {
+  const individualPlayerString = statCategories(excelData)[1];
+
+  
 
   // TODO: For each player stat line, get player name
 
@@ -155,9 +165,9 @@ const createData = (statYear) => {
   // TODO: For each player stat line, get yards
   // TODO: For each player stat line, get touchdowns
   // TODO: For each player stat line, get interceptions
-  
+
   console.log(`player: ${getPlayerName(individualPlayerString)}`);
-  // const team = statCategories(statYear);
+  // const team = statCategories(excelData);
   /*
     const attempts
     const completions
@@ -166,7 +176,8 @@ const createData = (statYear) => {
     const interceptions
 */
 
-  return getPlayerName(individualPlayerString);
+  // return getPlayerName(individualPlayerString);
+  return getAllPassingStats
 };
 
 export const FourthQuarterPassingStats = () => {
