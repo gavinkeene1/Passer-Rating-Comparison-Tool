@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import Bookshelf from './bookshelf';
 import { Link } from 'react-router-dom';
+import { FourthQuarterPassingStats } from './FourthQuarterPassing2021';
 
 class ShowBookcase extends Component {
     static propTypes = {
@@ -28,6 +29,12 @@ class ShowBookcase extends Component {
             </div>
             <div className="list-books-content">
                 <div>
+                            <Bookshelf
+                                bookshelfTitle='NFL Passing Stats'
+                                bookshelfBooks={currentlyReading}
+                                updateShelf={updateShelf}
+                            />
+                            {FourthQuarterPassingStats()}
                             <Bookshelf
                                 bookshelfTitle='Currently Reading'
                                 bookshelfBooks={currentlyReading}
