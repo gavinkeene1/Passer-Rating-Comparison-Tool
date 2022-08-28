@@ -1,3 +1,6 @@
+import React, { Component } from 'react';
+import PropTypes from 'prop-types';
+
 export const header = `Player Team Att Cmp Yds TD Int`;
 
 const isTeamName = (value) =>
@@ -148,8 +151,9 @@ const getIndividualPlayerStatString = (excelData, statLineIndex) => {
     return statCategories(excelData)[statLineIndex];
 }
 
-const getPlayerName = (rowOfPlayerData) => {
+const getPlayerData = (rowOfPlayerData) => {
     const playerName = [];
+    const playerTeam = [];
 
     // The first index in a row of player data is the First Name.
     const firstName = rowOfPlayerData.split(" ")[0];
@@ -160,19 +164,27 @@ const getPlayerName = (rowOfPlayerData) => {
     const lastName = rowOfPlayerData.split(" ")[1].split('\t')[0];
     playerName.push(lastName);
 
-    return playerName.join(' ');
+    const team = rowOfPlayerData.split(" ")[1].split('\t')[1];
+    playerTeam.push(team);
+
+    return <div>{playerName.join(' ')} {playerTeam}</div>;
 }
 
 const createData = (excelData) => {
     // Get an individual players stats as a string.
-    return getPlayerName(getIndividualPlayerStatString(excelData, 2));
 
-  // return getArrayOfAllPlayerStatLines(excelData)[1] // Remove after checking it out
-
-  
+    return <table>
+  <tr>
+    <th>Company</th>
+    <th>Contact</th>
+    <th>Country</th>
+  </tr>
+  <tr>
+    <td>{getPlayerData(getIndividualPlayerStatString(excelData, 2))}</td>
+  </tr>
+    </table>
 
   // TODO: For each player stat line, get player name
-
 
   // TODO: For each player stat line, get attempts
   // TODO: For each player stat line, get completions
@@ -180,7 +192,6 @@ const createData = (excelData) => {
   // TODO: For each player stat line, get touchdowns
   // TODO: For each player stat line, get interceptions
 
-  console.log(`player: ${getPlayerName(getIndividualPlayerStatString)}`);
   // const team = statCategories(excelData);
   /*
     const attempts
@@ -189,8 +200,6 @@ const createData = (excelData) => {
     const touchdowns
     const interceptions
 */
-
-  // return getPlayerName(individualPlayerString);
 };
 
 export const FourthQuarterPassingStats = () => {
