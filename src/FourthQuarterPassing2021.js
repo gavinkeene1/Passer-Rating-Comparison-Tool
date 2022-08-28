@@ -132,6 +132,20 @@ const statCategories = (excelData) => {
     return statsWithCommas(excelData).split("---");
 };
 
+const FourthQuarterPassingStatsArray = (excelData) => {
+    return statCategories(excelData);
+}
+
+const getArrayOfAllPlayerStatLines = (excelData) => {
+    // For each player stat line in the array, push it to a new array of player stat lines.
+    const allPlayerStatLines = [];
+
+    FourthQuarterPassingStatsArray(excelData).forEach(statLine =>
+        allPlayerStatLines.push(statLine));
+
+    return allPlayerStatLines;
+}
+
 const getPlayerName = (individualPlayerString) => {
     const playerName = [];
 
@@ -144,16 +158,10 @@ const getPlayerName = (individualPlayerString) => {
     return playerName.join(' ');
 }
 
-const FourthQuarterPassingStatsArray = (excelData) => {
-    return statCategories(excelData);
-}
-
-const getAllPassingStats = (excelDataArray) => {
-    return excelDataArray
-}
-
 const createData = (excelData) => {
   const individualPlayerString = statCategories(excelData)[1];
+
+  return getArrayOfAllPlayerStatLines(excelData) // Remove after checking it out
 
   
 
@@ -177,7 +185,6 @@ const createData = (excelData) => {
 */
 
   // return getPlayerName(individualPlayerString);
-  return getAllPassingStats
 };
 
 export const FourthQuarterPassingStats = () => {
