@@ -148,13 +148,16 @@ const getIndividualPlayerStatString = (excelData, statLineIndex) => {
     return statCategories(excelData)[statLineIndex];
 }
 
-const getPlayerName = (getIndividualPlayerStatString) => {
+const getPlayerName = (rowOfPlayerData) => {
     const playerName = [];
 
-    const firstName = getIndividualPlayerStatString.split(" ")[0];
+    // The first index in a row of player data is the First Name.
+    const firstName = rowOfPlayerData.split(" ")[0];
     playerName.push(firstName);
 
-    const lastName = getIndividualPlayerStatString.split(" ")[1];
+    // The second index in a row of player data has to get broken up. It contains last name + the rest of the data.
+    // It's separated by \t instead of spaces (" "). The first index of this piece contains the Last Name.
+    const lastName = rowOfPlayerData.split(" ")[1].split('\t')[0];
     playerName.push(lastName);
 
     return playerName.join(' ');
@@ -162,7 +165,7 @@ const getPlayerName = (getIndividualPlayerStatString) => {
 
 const createData = (excelData) => {
     // Get an individual players stats as a string.
-    return getPlayerName(getIndividualPlayerStatString(excelData, 1));
+    return getPlayerName(getIndividualPlayerStatString(excelData, 2));
 
   // return getArrayOfAllPlayerStatLines(excelData)[1] // Remove after checking it out
 
