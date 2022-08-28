@@ -1,6 +1,3 @@
-import { stat } from "fs";
-import { useCallback } from "react";
-
 export const header = `Player Team Att Cmp Yds TD Int`;
 
 const isTeamName = (value) =>
@@ -146,22 +143,28 @@ const getArrayOfAllPlayerStatLines = (excelData) => {
     return allPlayerStatLines;
 }
 
-const getPlayerName = (individualPlayerString) => {
+const getIndividualPlayerStatString = (excelData, statLineIndex) => {
+    // Pull an individual row of player data from all of the stats.
+    return statCategories(excelData)[statLineIndex];
+}
+
+const getPlayerName = (getIndividualPlayerStatString) => {
     const playerName = [];
 
-    const firstName = individualPlayerString.split(" ")[0];
+    const firstName = getIndividualPlayerStatString.split(" ")[0];
     playerName.push(firstName);
 
-    const lastName = individualPlayerString.split(" ")[1];
+    const lastName = getIndividualPlayerStatString.split(" ")[1];
     playerName.push(lastName);
 
     return playerName.join(' ');
 }
 
 const createData = (excelData) => {
-  const individualPlayerString = statCategories(excelData)[1];
+    // Get an individual players stats as a string.
+    return getPlayerName(getIndividualPlayerStatString(excelData, 1));
 
-  return getArrayOfAllPlayerStatLines(excelData) // Remove after checking it out
+  // return getArrayOfAllPlayerStatLines(excelData)[1] // Remove after checking it out
 
   
 
@@ -174,7 +177,7 @@ const createData = (excelData) => {
   // TODO: For each player stat line, get touchdowns
   // TODO: For each player stat line, get interceptions
 
-  console.log(`player: ${getPlayerName(individualPlayerString)}`);
+  console.log(`player: ${getPlayerName(getIndividualPlayerStatString)}`);
   // const team = statCategories(excelData);
   /*
     const attempts
@@ -188,6 +191,6 @@ const createData = (excelData) => {
 };
 
 export const FourthQuarterPassingStats = () => {
-  console.log(createData(FourthQuarterPassing2021));
+  // console.log(createData(FourthQuarterPassing2021));
   return createData(FourthQuarterPassing2021);
 };
