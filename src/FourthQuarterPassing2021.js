@@ -147,6 +147,15 @@ const getPlayerName = (individualPlayerString) => {
 const createData = (statYear) => {
   const individualPlayerString = statCategories(statYear)[1];
 
+  // TODO: For each player stat line, get player name
+
+
+  // TODO: For each player stat line, get attempts
+  // TODO: For each player stat line, get completions
+  // TODO: For each player stat line, get yards
+  // TODO: For each player stat line, get touchdowns
+  // TODO: For each player stat line, get interceptions
+  
   console.log(`player: ${getPlayerName(individualPlayerString)}`);
   // const team = statCategories(statYear);
   /*
