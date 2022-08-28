@@ -132,9 +132,22 @@ const statCategories = (statYear) => {
     return statsWithCommas(statYear).split("---");
 };
 
+const getPlayerName = (individualPlayerString) => {
+    const playerName = [];
+
+    const firstName = individualPlayerString.split(" ")[0];
+    playerName.push(firstName);
+
+    const lastName = individualPlayerString.split(" ")[1];
+    playerName.push(lastName);
+
+    return playerName.join(' ');
+}
+
 const createData = (statYear) => {
-  const player = statCategories(statYear)[1];
-  // console.log(`player: ${player}`);
+  const individualPlayerString = statCategories(statYear)[1];
+
+  console.log(`player: ${getPlayerName(individualPlayerString)}`);
   // const team = statCategories(statYear);
   /*
     const attempts
@@ -144,7 +157,7 @@ const createData = (statYear) => {
     const interceptions
 */
 
-  return [player];
+  return getPlayerName(individualPlayerString);
 };
 
 export const FourthQuarterPassingStats = () => {
