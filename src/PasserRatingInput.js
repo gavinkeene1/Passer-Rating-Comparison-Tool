@@ -8,19 +8,40 @@ const round = require('lodash/round');
 * @Docs https://en.wikipedia.org/wiki/Passer_rating#NFL_and_CFL_formula
 * @Dependencies: lodash (clamp, round) */
 const getPasserRating = (
-  attempts,
   completions,
+  attempts,
   yards,
   touchdowns,
   interceptions
 ) => {
   if (attempts === 0) return 0
-  const a = clamp((completions / attempts - 0.3) * 5, 0, 2.375)
-  const b = clamp((yards / attempts - 3) * 0.25, 0, 2.375)
-  const c = clamp((touchdowns / attempts) * 20, 0, 2.375)
-  const d = clamp(2.375 - (interceptions / attempts) * 25, 0, 2.375)
+  const a = clamp((completions / attempts - 0.3) * 5, 0, 2.375);
+  const b = clamp((yards / attempts - 3) * 0.25, 0, 2.375);
+  const c = clamp((touchdowns / attempts) * 20, 0, 2.375);
+  const d = clamp(2.375 - ((interceptions / attempts) * 25), 0, 2.375);
 
-  return round(((a + b + c + d) / 6) * 100, 1)
+  console.log(`13/17 percentage is ${13/17*100}%`);
+  console.log(a);
+  console.log(`completions was ${completions}`);
+  console.log(b);
+  console.log(`yards was ${yards}`);
+  console.log(c);
+  console.log(`touchdowns was ${touchdowns} and attempts was ${attempts}`);
+  console.log(`tds/att * 20 is ${(touchdowns/attempts) * 20} `);
+  console.log(d);
+  console.log(`interceptions was ${interceptions}`);
+
+  const unadjustedPasserRating = round(((a + b + c + d) / 6) * 100, 1);
+
+  /*if (unadjustedPasserRating > 15&& (a < .775 || b < 7.5 || c < .11875 || interceptions > 0)) { 
+    return 
+  }*/
+
+  console.log(unadjustedPasserRating);
+
+  return unadjustedPasserRating;
+
+
 };
 
 const PasserRatingInput = () => {
@@ -31,14 +52,18 @@ const PasserRatingInput = () => {
   const [interceptions, setInterceptions] = useState(0);
 
   const setValue = (event) => {
-    const value = Number(event.target.value ? event.target.value : 0);
+    console.clear();
+    console.log(`event.target.value is ${event.target.value}: ${typeof event.target.value}`);
+    let value = 0;
+    //if (event.target.value === value) {
+      value = Number(event.target.value);
+    //}
     event.target.id === 'completions' && setCompletions(value);
     event.target.id === 'attempts' && setAttempts(value);
     event.target.id === 'yards' && setYards(value);
     event.target.id === 'touchdowns' && setTouchdowns(value);
     event.target.id === 'interceptions' && setInterceptions(value);
-    console.log(`value changed to ${value}`);
-    console.log(getPasserRating(completions, attempts, yards, touchdowns, interceptions));
+    getPasserRating(completions, attempts, yards, touchdowns, interceptions);
   };
 
   return (
