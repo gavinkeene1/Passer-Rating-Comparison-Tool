@@ -14,30 +14,28 @@ const getPasserRating = (
   touchdowns,
   interceptions
 ) => {
-  if (attempts === 0) return 0
-  const a = clamp((completions / attempts - 0.3) * 5, 0, 2.375);
-  const b = clamp((yards / attempts - 3) * 0.25, 0, 2.375);
-  const c = clamp((touchdowns / attempts) * 20, 0, 2.375);
-  const d = clamp(2.375 - ((interceptions / attempts) * 25), 0, 2.375);
+  const completionPercentage = (completions / attempts);
+  const yardsPerAttempt = (yards / attempts);
+  const touchdownsPerAttempt = (touchdowns / attempts);
+  const interceptionsPerAttempt = (interceptions / attempts);
 
-  console.log(`13/17 percentage is ${13/17*100}%`);
-  console.log(a);
+  const a = clamp((completionPercentage - 0.3) * 5, 0, 2.375);
+  const b = clamp(((yardsPerAttempt) - 3) * 0.25, 0, 2.375);
+  const c = clamp((touchdownsPerAttempt) * 20, 0, 2.375);
+  const d = clamp(2.375 - ((interceptionsPerAttempt) * 25), 0, 2.375);
+
+  console.log(`(${yardsPerAttempt}-0.3) * 5 = ${(yardsPerAttempt-0.3) * 5}`);
   console.log(`completions was ${completions}`);
-  console.log(b);
+  console.log(`(${yards}/${attempts} - 3)* 0.25 = ${((yards/attempts) - 3) * 0.25}`);
   console.log(`yards was ${yards}`);
-  console.log(c);
   console.log(`touchdowns was ${touchdowns} and attempts was ${attempts}`);
   console.log(`tds/att * 20 is ${(touchdowns/attempts) * 20} `);
-  console.log(d);
-  console.log(`interceptions was ${interceptions}`);
 
-  const unadjustedPasserRating = round(((a + b + c + d) / 6) * 100, 1);
+  const unadjustedPasserRating = round(((a + b + c + d) / 6) * 100, 3);
 
   /*if (unadjustedPasserRating > 15&& (a < .775 || b < 7.5 || c < .11875 || interceptions > 0)) { 
     return 
   }*/
-
-  console.log(unadjustedPasserRating);
 
   return unadjustedPasserRating;
 
@@ -72,17 +70,18 @@ const PasserRatingInput = () => {
       <button onClick={() => setCompletions(completions + 1)}>
         Click me
       </button>
-      <input type="text" id="completions" name="fname" placeholder='comp' style={{width: 100, margin: 4}} onChange={setValue} />
-      <input type="text" id="attempts" name="fname" placeholder='att' style={{width: 100, margin: 4}} onChange={setValue} />
-      <input type="text" id="yards" name="fname" placeholder='yards' style={{width: 100, margin: 4}} onChange={setValue} />
-      <input type="text" id="touchdowns" name="fname" placeholder='tds' style={{width: 100, margin: 4}} onChange={setValue} />
-      <input type="text" id="interceptions" name="fname" placeholder='ints' style={{width: 100, margin: 4}} onChange={setValue} /><br /><br></br>
+      <input type="text" id="completions" name="fname" placeholder='comp' style={{width: 100, margin: 4}} onInput={setValue} />
+      <input type="text" id="attempts" name="fname" placeholder='att' style={{width: 100, margin: 4}} onInput={setValue} />
+      <input type="text" id="yards" name="fname" placeholder='yards' style={{width: 100, margin: 4}} onInput={setValue} />
+      <input type="text" id="touchdowns" name="fname" placeholder='tds' style={{width: 100, margin: 4}} onInput={setValue} />
+      <input type="text" id="interceptions" name="fname" placeholder='ints' style={{width: 100, margin: 4}} onInput={setValue} /><br /><br></br>
 
       <p>Completions: {completions}</p>
       <p>Attempts: {attempts}</p>
       <p>Yards: {yards}</p>
       <p>Touchdowns: {touchdowns}</p>
       <p>Interceptions: {interceptions}</p>
+      <p>Passer Rating: {getPasserRating(completions, attempts, yards, touchdowns, interceptions)}</p>
     </div>
   );
 }
