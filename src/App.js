@@ -4,6 +4,7 @@ import SearchBooks from './SearchBooks';
 import * as BooksAPI from './BooksAPI';
 import { Route } from 'react-router-dom';
 import './App.css';
+import PasserRatingInput from './PasserRatingInput';
 
 class BooksApp extends React.Component {
   state = {
@@ -44,7 +45,7 @@ class BooksApp extends React.Component {
         
         )} />
         <Route path='/passer-rating' render={({history}) => (
-          <SearchBooks
+          <PasserRatingInput
         />
         )} />
       </div>
