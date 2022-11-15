@@ -40,7 +40,11 @@ class BooksApp extends React.Component {
         )} />
         <Route path='/search' render={({history}) => (
           <SearchBooks
-
+        />
+        
+        )} />
+        <Route path='/passer-rating' render={({history}) => (
+          <SearchBooks
         />
         )} />
       </div>
