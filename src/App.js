@@ -1,4 +1,4 @@
-import React from 'react';
+import * as React from 'react';
 import ShowBookcase from './ShowBookcase';
 import SearchBooks from './SearchBooks';
 import * as BooksAPI from './BooksAPI';
