@@ -1,7 +1,9 @@
 import * as React from 'react';
 import { useState } from 'react';
 
-function PasserRatingInput() {
+
+
+const PasserRatingInput = () => {
   const [completions, setCompletions] = useState(0);
   const [attempts, setAttempts] = useState(0);
   const [yards, setYards] = useState(0);
@@ -15,7 +17,6 @@ function PasserRatingInput() {
     event.target.id === 'yards' && setYards(value);
     event.target.id === 'touchdowns' && setTouchdowns(value);
     event.target.id === 'interceptions' && setInterceptions(value);
-    console.log(`completions: ${completions}`);
   };
 
   return (
