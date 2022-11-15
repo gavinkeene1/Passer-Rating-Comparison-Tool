@@ -1,8 +1,6 @@
 import * as React from 'react';
 import { useState } from 'react';
 
-
-
 const PasserRatingInput = () => {
   const [completions, setCompletions] = useState(0);
   const [attempts, setAttempts] = useState(0);
@@ -41,4 +39,3 @@ const PasserRatingInput = () => {
 }
 
 export default PasserRatingInput;
-//export default PasserRatingInput;
