@@ -1,33 +1,25 @@
 import * as React from 'react';
 import { useState } from 'react';
+import { getPasserRating } from './AddQBStats.util';
+import { displayTotalRow } from './DisplayQBStats.util';
 
-const clamp =  require('lodash/clamp');
-const round = require('lodash/round');
+export const getTotalQBStats = (totalQBRow, statIndex) => {
+    return totalQBRow[0][statIndex];
+  }
 
-/** Get Passer Rating
-* @Docs https://en.wikipedia.org/wiki/Passer_rating#NFL_and_CFL_formula
-* @Dependencies: lodash (clamp, round) */
-const getPasserRating = (
-  completions,
-  attempts,
-  yards,
-  touchdowns,
-  interceptions
-) => {
-  const completionPercentage = (completions / attempts);
-  const yardsPerAttempt = (yards / attempts);
-  const touchdownsPerAttempt = (touchdowns / attempts);
-  const interceptionsPerAttempt = (interceptions / attempts);
+  /** Push the data of a stats input row to the total stats array for a particular QB.  */
+  export const getOneStatsRow = (term, completions, attempts, yards, touchdowns, interceptions) => {
+    let statsRow = []; // Term, Completions, Attempts, Yards, Touchdowns, Interceptions
+    statsRow.push([term], [completions], [attempts], [yards], [touchdowns], [interceptions]);
 
-  const a = clamp((completionPercentage - 0.3) * 5, 0, 2.375);
-  const b = clamp(((yardsPerAttempt) - 3) * 0.25, 0, 2.375);
-  const c = clamp((touchdownsPerAttempt) * 20, 0, 2.375);
-  const d = clamp(2.375 - ((interceptionsPerAttempt) * 25), 0, 2.375);
+    // Push the row of data to the total stats for an individual QB. Individual stats will be gotten from there.
+    totalQBRow.push(([[term], [completions], [attempts], [yards], [touchdowns], [interceptions]]));
 
-  const unadjustedPasserRating = round(((a + b + c + d) / 6) * 100, 1);
+    return statsRow;
+  };
 
-  return unadjustedPasserRating;
-};
+
+export let totalQBRow = [];
 
 const AddQBStats = () => {
     const [term, setTerm] = useState('');
@@ -38,6 +30,8 @@ const AddQBStats = () => {
     const [interceptions, setInterceptions] = useState(0);
     const [numberOfYears, setNumberOfYears] = useState(0);
 
+ /** Update/set the value of a stat on changing its input.
+  */
   const setValue = (event) => {
     console.clear();
     console.log(`event.target.value is ${event.target.value}: ${typeof event.target.value}`);
@@ -53,29 +47,6 @@ const AddQBStats = () => {
     getPasserRating(completions, attempts, yards, touchdowns, interceptions);
   };
 
-
-
-  const getOneStatsRow = (term, completions, attempts, yards, touchdowns, interceptions) => {
-    let statsRow = []; // Term, Completions, Attempts, Yards, Touchdowns, Interceptions
-    statsRow.push([term], [completions], [attempts], [yards], [touchdowns], [interceptions]);
-
-    return statsRow;
-  };
-
-  const displayStatsRow = (term, completions, attempts, yards, touchdowns, interceptions) => {
-    let row = getOneStatsRow(term, completions, attempts, yards, touchdowns, interceptions);
-    return <><br />
-      <input type="text" disabled id="gameOrYear-" name="fname" style={{ width: 100, margin: 4 }} value={'Total'} />
-      <input type="text" disabled id="completions" name="fname" placeholder='comp' style={{ width: 100, margin: 4 }} value={row[1]} />
-      <input type="text" disabled id="attempts" name="fname" placeholder='att' style={{ width: 100, margin: 4 }} value={row[2]} />
-      <input type="text" disabled id="yards" name="fname" placeholder='yards' style={{ width: 100, margin: 4 }} value={row[3]} />
-      <input type="text" disabled id="touchdowns" name="fname" placeholder='tds' style={{ width: 100, margin: 4 }} value={row[4]} />
-      <input type="text" disabled id="interceptions" name="fname" placeholder='ints' style={{ width: 100, margin: 4 }} value={row[5]} />
-      <br />
-      </>
-
-  }
-
   const simpleDataEntry = () => {
     return <>
     <input type="text" id="term" name="fname" placeholder='game/year' style={{ width: 100, margin: 4 }} onInput={setValue} />
@@ -84,7 +55,7 @@ const AddQBStats = () => {
     <input type="text" id="yards" name="fname" placeholder='yards' style={{ width: 100, margin: 4 }} onInput={setValue} />
     <input type="text" id="touchdowns" name="fname" placeholder='tds' style={{ width: 100, margin: 4 }} onInput={setValue} />
     <input type="text" id="interceptions" name="fname" placeholder='ints' style={{ width: 100, margin: 4 }} onInput={setValue} />
-    {displayStatsRow(term, completions, attempts, yards, touchdowns, interceptions)}
+    {displayTotalRow(term, completions, attempts, yards, touchdowns, interceptions)}
     <br />
     </>
 }
@@ -101,11 +72,21 @@ const oneQBRow = () => {
       </>
   }
 
+
+
   const displayRowsPasserRating = (years) => {
     let quarterbackTable = [];
     for (let i = 0; i < years; i++) {
       quarterbackTable.push(oneQBRow());
     }
+    console.log(quarterbackTable)
+    quarterbackTable.push(
+        [totalQBRow[totalQBRow.length-1][1], 
+        totalQBRow[totalQBRow.length-1][2],
+        totalQBRow[totalQBRow.length-1][3],
+        totalQBRow[totalQBRow.length-1][4],
+        totalQBRow[totalQBRow.length-1][5]]);
+
     return quarterbackTable;
   }
 
