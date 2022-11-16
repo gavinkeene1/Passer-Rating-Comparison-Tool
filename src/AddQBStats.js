@@ -53,17 +53,19 @@ const AddQBStats = () => {
     getPasserRating(completions, attempts, yards, touchdowns, interceptions);
   };
 
-  const getStatsRow = (term, completions, attempts, yards, touchdowns, interceptions) => {
+
+
+  const getOneStatsRow = (term, completions, attempts, yards, touchdowns, interceptions) => {
     let statsRow = []; // Term, Completions, Attempts, Yards, Touchdowns, Interceptions
-    statsRow.push([term, completions, attempts, yards, touchdowns, interceptions]);
+    statsRow.push([term], [completions], [attempts], [yards], [touchdowns], [interceptions]);
 
     return statsRow;
   };
 
   const displayStatsRow = (term, completions, attempts, yards, touchdowns, interceptions) => {
-    let row = getStatsRow(term, completions, attempts, yards, touchdowns, interceptions);
+    let row = getOneStatsRow(term, completions, attempts, yards, touchdowns, interceptions);
     return <><br />
-      <input type="text" disabled id="gameOrYear-" name="fname" placeholder='game/year' style={{ width: 100, margin: 4 }} value={'Total'} />
+      <input type="text" disabled id="gameOrYear-" name="fname" style={{ width: 100, margin: 4 }} value={'Total'} />
       <input type="text" disabled id="completions" name="fname" placeholder='comp' style={{ width: 100, margin: 4 }} value={row[1]} />
       <input type="text" disabled id="attempts" name="fname" placeholder='att' style={{ width: 100, margin: 4 }} value={row[2]} />
       <input type="text" disabled id="yards" name="fname" placeholder='yards' style={{ width: 100, margin: 4 }} value={row[3]} />
@@ -82,7 +84,6 @@ const AddQBStats = () => {
     <input type="text" id="yards" name="fname" placeholder='yards' style={{ width: 100, margin: 4 }} onInput={setValue} />
     <input type="text" id="touchdowns" name="fname" placeholder='tds' style={{ width: 100, margin: 4 }} onInput={setValue} />
     <input type="text" id="interceptions" name="fname" placeholder='ints' style={{ width: 100, margin: 4 }} onInput={setValue} />
-    <button id="submit-passer-stats" name="fname" onClick={() => {displayStatsRow(term, completions, attempts, yards, touchdowns, interceptions)}} >Add QB Data</button>
     {displayStatsRow(term, completions, attempts, yards, touchdowns, interceptions)}
     <br />
     </>
