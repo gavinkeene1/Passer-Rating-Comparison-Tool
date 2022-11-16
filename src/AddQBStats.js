@@ -30,18 +30,20 @@ const getPasserRating = (
 };
 
 const AddQBStats = () => {
-  const [completions, setCompletions] = useState(0);
-  const [attempts, setAttempts] = useState(0);
-  const [yards, setYards] = useState(0);
-  const [touchdowns, setTouchdowns] = useState(0);
-  const [interceptions, setInterceptions] = useState(0);
-  const [numberOfYears, setNumberOfYears] = useState(0);
+    const [term, setTerm] = useState('');
+    const [completions, setCompletions] = useState(0);
+    const [attempts, setAttempts] = useState(0);
+    const [yards, setYards] = useState(0);
+    const [touchdowns, setTouchdowns] = useState(0);
+    const [interceptions, setInterceptions] = useState(0);
+    const [numberOfYears, setNumberOfYears] = useState(0);
 
   const setValue = (event) => {
     console.clear();
     console.log(`event.target.value is ${event.target.value}: ${typeof event.target.value}`);
     let value = 0;
     value = Number(event.target.value);
+    event.target.id === 'completions' && setTerm(value);
     event.target.id === 'completions' && setCompletions(value);
     event.target.id === 'attempts' && setAttempts(value);
     event.target.id === 'yards' && setYards(value);
@@ -50,6 +52,41 @@ const AddQBStats = () => {
     event.target.id === 'numberOfYears' && setNumberOfYears(value);
     getPasserRating(completions, attempts, yards, touchdowns, interceptions);
   };
+
+  const getStatsRow = (term, completions, attempts, yards, touchdowns, interceptions) => {
+    let statsRow = []; // Term, Completions, Attempts, Yards, Touchdowns, Interceptions
+    statsRow.push([term, completions, attempts, yards, touchdowns, interceptions]);
+
+    return statsRow;
+  };
+
+  const displayStatsRow = (term, completions, attempts, yards, touchdowns, interceptions) => {
+    let row = getStatsRow(term, completions, attempts, yards, touchdowns, interceptions);
+    return <><br />
+      <input type="text" disabled id="gameOrYear-" name="fname" placeholder='game/year' style={{ width: 100, margin: 4 }} value={'Total'} />
+      <input type="text" disabled id="completions" name="fname" placeholder='comp' style={{ width: 100, margin: 4 }} value={row[1]} />
+      <input type="text" disabled id="attempts" name="fname" placeholder='att' style={{ width: 100, margin: 4 }} value={row[2]} />
+      <input type="text" disabled id="yards" name="fname" placeholder='yards' style={{ width: 100, margin: 4 }} value={row[3]} />
+      <input type="text" disabled id="touchdowns" name="fname" placeholder='tds' style={{ width: 100, margin: 4 }} value={row[4]} />
+      <input type="text" disabled id="interceptions" name="fname" placeholder='ints' style={{ width: 100, margin: 4 }} value={row[5]} />
+      <br />
+      </>
+
+  }
+
+  const simpleDataEntry = () => {
+    return <>
+    <input type="text" id="term" name="fname" placeholder='game/year' style={{ width: 100, margin: 4 }} onInput={setValue} />
+    <input type="text" id="completions" name="fname" placeholder='comp' style={{ width: 100, margin: 4 }} onInput={setValue} />
+    <input type="text" id="attempts" name="fname" placeholder='att' style={{ width: 100, margin: 4 }} onInput={setValue} />
+    <input type="text" id="yards" name="fname" placeholder='yards' style={{ width: 100, margin: 4 }} onInput={setValue} />
+    <input type="text" id="touchdowns" name="fname" placeholder='tds' style={{ width: 100, margin: 4 }} onInput={setValue} />
+    <input type="text" id="interceptions" name="fname" placeholder='ints' style={{ width: 100, margin: 4 }} onInput={setValue} />
+    <button id="submit-passer-stats" name="fname" onClick={() => {displayStatsRow(term, completions, attempts, yards, touchdowns, interceptions)}} >Add QB Data</button>
+    {displayStatsRow(term, completions, attempts, yards, touchdowns, interceptions)}
+    <br />
+    </>
+}
 
 const oneQBRow = () => {
       return <>
@@ -77,9 +114,10 @@ const oneQBRow = () => {
 
   return (
     <div>
-      <h1>Passer Rasdating</h1>
+      <h1>Passer Rating (Simpler)</h1>
       <input type="text" id="numberOfYears" name="fname" placeholder='# of years' style={{ width: 100, margin: 4 }} onInput={setValue} /><br />
       {/*<button id="addQuarterback" name="fname" onClick={addQuarterback}>Add Quarterback</button>*/}
+      {simpleDataEntry()}
       {displayRowsPasserRating(numberOfYears)}
       <p>Passer Rating: {getPasserRating(completions, attempts, yards, touchdowns, interceptions)}</p>
     </div>
