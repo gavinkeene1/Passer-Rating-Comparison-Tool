@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import * as React from 'react';
 import PropTypes from 'prop-types';
 
 export const header = `Player Team Att Cmp Yds TD Int`;

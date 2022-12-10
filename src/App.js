@@ -1,9 +1,11 @@
-import React from 'react';
+import * as React from 'react';
 import ShowBookcase from './ShowBookcase';
 import SearchBooks from './SearchBooks';
 import * as BooksAPI from './BooksAPI';
 import { Route } from 'react-router-dom';
 import './App.css';
+import PasserRatingInput from './PasserRatingInput';
+import AddQBStats from './AddQBStats';
 
 class BooksApp extends React.Component {
   state = {
@@ -40,8 +42,14 @@ class BooksApp extends React.Component {
         )} />
         <Route path='/search' render={({history}) => (
           <SearchBooks
-
         />
+        
+        )} />
+        <Route path='/passer-rating' render={({history}) => (
+          <PasserRatingInput />
+          )} />
+        <Route path='/passer-rating-simple' render={({history}) => (
+          <AddQBStats />
         )} />
       </div>
     )
