@@ -1,4 +1,4 @@
-# Passer-Rating-Comparison-Tool
+# Passer Rating Comparison Tool
 A retooled project (work in progress) to compare NFL Quarterback Passer Ratings in within different contexts. Formerly: A bookshelf app that allows users to select and categorize books they have read, are currently reading, or want to read on corresponding shelves. This project is part of the Udacity React Nanodegree.
 
 ## TL;DR
